@@ -54,7 +54,7 @@ body.mobile .desk{display:none}
 #wp2{font:900 17px Arial;margin-top:4px;display:flex;gap:14px;justify-content:flex-end} #nades{color:#ffe066} #arty{color:#ff9a6a;position:relative} 
 #arty:after{content:'';position:absolute;left:0;bottom:-5px;height:3px;width:calc(var(--k) * 100%);background:#ff9a6a;border-radius:2px}
 .keyh{font:700 12px Arial;color:#ffe9c0;margin-top:6px} body.mobile .keyh{display:none}
-#bossb,#capb{position:absolute;left:50%;top:58px;transform:translateX(-50%);width:min(520px,70vw)} #bossb:before{content:'DƏMİR TİRAN';display:block;text-align:center;font:900 14px Arial;letter-spacing:4px;color:#ff8a6a;margin-bottom:4px}
+#bossb,#capb{position:absolute;left:50%;top:58px;transform:translateX(-50%);width:min(520px,70vw)} #bossb:before{content:attr(data-n);display:block;text-align:center;font:900 14px Arial;letter-spacing:4px;color:#ff8a6a;margin-bottom:4px}
 #bossb i{background:linear-gradient(180deg,#ff8a5a,#c02010)} #capb i{background:linear-gradient(180deg,#9fd0ff,#2a6fe0);width:0} #capl{text-align:center;font:800 13px Arial;margin-top:4px}
 #om{position:absolute;left:0;top:0;width:0;height:0} #om b{position:absolute;left:-13px;top:-34px;width:26px;height:26px;background:#ffd23a;border:3px solid #fff;border-radius:50% 50% 50% 0;transform:rotate(-45deg);box-shadow:0 2px 6px #000} #om span{position:absolute;left:-30px;top:-2px;width:60px;text-align:center;font:900 13px Arial}
 #xh{position:absolute;left:50%;top:50%;width:0;height:0} #xh i{position:absolute;background:#fff;box-shadow:0 0 2px #000,0 0 1px #000} #xh .d{left:-2px;top:-2px;width:4px;height:4px;border-radius:2px}
@@ -87,6 +87,8 @@ body.mobile .desk{display:none}
 #baim{right:132px;bottom:30px;width:62px;height:62px} #bnade{right:30px;bottom:150px;width:58px;height:58px} #bcrouch{right:202px;bottom:24px;width:54px;height:54px}
 #breload{right:100px;bottom:122px;width:54px;height:54px} #buse{right:160px;bottom:104px;width:54px;height:54px} #barty{right:26px;bottom:222px;width:58px;height:58px}
 #bsq{left:24px;top:50%;width:62px;height:62px;border-radius:16px} #bpause{right:16px;top:64px;width:44px;height:44px;border-radius:12px}
+#mlist .card{width:min(290px,86vw);padding:14px 16px 12px} #mlist .card p{min-height:34px;font-size:13px} .ov{justify-content:safe center} .st.lv b{font-size:16px;color:#d8c8a8;margin:0 2px} .st.lv b.on{color:#2a6fe0}
+@media (max-height:460px) and (orientation:landscape){ #mlist .card{width:min(250px,29vw);padding:8px 10px 8px;border-radius:14px} #mlist .card h3{font-size:15px;margin:0 0 2px} #mlist .card p{font-size:11px;min-height:0;margin:0 0 4px;line-height:1.25} #mlist .card .num{width:32px;height:32px;font-size:17px;line-height:32px;left:-6px;top:-8px} #mlist .card .st b{font-size:15px} #mlist .card .btn{font-size:13px;padding:6px 12px;min-width:0} #mlist{gap:10px 8px} }
 body.mobile #pb{display:none}
 body.mobile #hpw{bottom:auto;top:70px;width:min(210px,32vw)} body.mobile #hpl{display:none} body.mobile .bar{height:14px;border-width:2px}
 body.mobile #wp{right:auto;left:50%;transform:translateX(-50%);bottom:6px;text-align:center} body.mobile #ammo{font-size:26px} body.mobile #wp2{justify-content:center;font-size:14px}
@@ -95,6 +97,18 @@ body.mobile #bsq{left:16px;top:auto;bottom:200px} body.mobile #hint{bottom:auto;
 @media (max-height:460px) and (orientation:landscape){ .cards .card.item{width:min(190px,22vw)} .cards{max-width:96vw} }
 @media (max-height:460px){ #bossb,#capb{left:61%;width:min(360px,40vw);top:62px} .mb{transform:scale(.8)} #bfire{right:14px;bottom:20px} #baim{right:104px;bottom:8px} #bcrouch{right:160px;bottom:4px} #breload{right:84px;bottom:86px} #buse{right:136px;bottom:62px} #bnade{right:16px;bottom:112px} #barty{right:16px;bottom:170px} body.mobile #bsq{bottom:auto;top:130px} #joy{left:24px;bottom:24px} #bpause{top:56px} }
 @media (orientation:portrait){ #bfire{bottom:70px} #baim{bottom:56px} #bcrouch{bottom:50px} #tl{max-width:60vw} #obj{font-size:14px} #ammo{font-size:32px} #hpw{bottom:auto;top:84px;width:44vw} body.mobile #hpw{top:96px} #joy{bottom:90px} #wp{bottom:auto;top:84px} #wp2{font-size:14px} #bossb,#capb{top:130px} .mb{transform:scale(.92)} }
+/* v1.1 coloured touch buttons (layout unchanged) */
+.mb{--c:30,30,30;--k:255,255,255;background:radial-gradient(circle at 38% 30%,rgba(var(--c),.78),rgba(var(--c),.42) 72%);border:3px solid rgba(var(--k),.85);box-shadow:0 3px 0 rgba(0,0,0,.35),inset 0 2px 0 rgba(255,255,255,.35);text-shadow:0 1px 2px #000,0 0 3px rgba(0,0,0,.6);transition:scale .06s,filter .06s,box-shadow .06s;letter-spacing:.3px}
+.mb.on{scale:.9;filter:brightness(1.4) saturate(1.2);box-shadow:inset 0 3px 7px rgba(0,0,0,.5),0 0 16px rgba(var(--c),.95);background:radial-gradient(circle at 38% 30%,rgba(var(--c),.95),rgba(var(--c),.7) 72%)}
+.mb.lit{box-shadow:0 0 0 3px rgba(255,255,255,.9),0 0 18px rgba(var(--c),1);background:radial-gradient(circle at 38% 30%,rgba(var(--c),.98),rgba(var(--c),.75) 72%)}
+#bfire{--c:225,45,35;--k:255,190,180} #baim{--c:40,115,235;--k:185,215,255} #bcrouch{--c:40,165,70;--k:185,255,190} #breload{--c:245,150,20;--k:255,225,150}
+#bnade{--c:115,125,40;--k:225,230,160} #buse{--c:25,145,155;--k:170,240,245} #barty{--c:135,60,200;--k:220,190,255} #bsq,#bpause{--c:20,20,20}
+body.annon #hint{visibility:hidden}
+#rot{display:none;z-index:60;background:radial-gradient(ellipse at center,#5a3a1e,#140c05)} body.mobile.portrait #rot{display:flex} body.mobile.portrait #mob{visibility:hidden}
+.rph{width:70px;height:116px;border:6px solid #ffd23a;border-radius:14px;position:relative;margin-bottom:26px;animation:rph 2.2s ease-in-out infinite;box-shadow:0 0 30px rgba(255,210,58,.35)} .rph:before{content:'';position:absolute;left:50%;bottom:6px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:#ffd23a}
+.rph i{position:absolute;left:-34px;top:-30px;width:40px;height:40px;border:5px solid transparent;border-top-color:#4aa8ff;border-left-color:#4aa8ff;border-radius:50%;transform:rotate(-20deg)}
+@keyframes rph{0%,15%{transform:rotate(0)}45%,70%{transform:rotate(-90deg)}100%{transform:rotate(0)}}
+@media (max-height:340px){ #barty{right:76px;bottom:150px} body.mobile #bsq{top:auto;bottom:30px;left:156px} }
 </style></head><body>
 <div id="hud" class="hide">
  <div id="tl"><div id="wavei"></div><div id="obj"></div></div>
@@ -116,17 +130,19 @@ body.mobile #bsq{left:16px;top:auto;bottom:200px} body.mobile #hint{bottom:auto;
  <div class="mtop"><span class="chip s">★ <span id="mstar">0</span></span><span class="chip c"><span id="mcoins">0</span> ◉</span></div>
  <h1>TOY <b>STRIKE</b></h1><div class="sub">HƏYƏT MÜHARİBƏSİ</div>
  <button class="btn yel" id="bplay">OYNA</button>
- <div><button class="btn" id="bshop">MAĞAZA</button><button class="btn" id="bdaily">GÜNDƏLİK HƏDİYYƏ</button></div>
+ <div><button class="btn" id="bshop">MAĞAZA</button><button class="btn" id="bbase">BAZA</button><button class="btn" id="bdaily">GÜNDƏLİK HƏDİYYƏ</button></div>
  <button class="btn gray sm" id="bsnd">Səs: Açıq</button>
  <div class="keys desk"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> hərəkət · <kbd>Shift</kbd> qaç · Siçan nişan/atəş · Sağ düymə nişan al · <kbd>C</kbd> sipər · <kbd>R</kbd> doldur · <kbd>G</kbd> qumbara<br><kbd>E</kbd> tanka min/düş · <kbd>Q</kbd> artilleriya zərbəsi · <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> komandaya əmr · <kbd>Esc</kbd> fasilə</div>
 </div>
 <div id="mis" class="ov dim hide"><h2>MİSSİYALAR</h2><div class="cards" id="mlist"></div><button class="btn gray back" style="margin-top:20px">← GERİ</button></div>
+<div id="base" class="ov dim hide"><h2>BAZA</h2><div class="sub" style="margin:0 0 14px"><span id="bcoins">0</span> ◉ · binalar bütün missiyalarda kömək edir</div><div class="cards" id="blist"></div><button class="btn gray back" style="margin-top:20px">← GERİ</button></div>
 <div id="shop" class="ov dim hide"><h2>MAĞAZA</h2><div class="sub" style="margin:0 0 14px"><span id="scoins">0</span> ◉</div><div class="cards" id="slist"></div><button class="btn gray back" style="margin-top:20px">← GERİ</button></div>
 <div id="dly" class="ov dim hide"><h2>GÜNDƏLİK HƏDİYYƏ</h2><div class="sub" style="margin:0 0 14px">Hər gün gəl — mükafat böyüyür! · <span id="dcoins">0</span> ◉</div><div class="dlist" id="dlist"></div><button class="btn yel" id="bclaim">GÖTÜR</button><button class="btn gray back">← GERİ</button></div>
 <div id="pause" class="ov dim hide"><h2>FASİLƏ</h2><button class="btn yel" id="bres">DAVAM ET</button><button class="btn gray sm" id="bpsnd">Səs: Açıq</button><button class="btn red" id="bquit">MENYUYA ÇIX</button>
  <div class="keys desk"><kbd>1</kbd> Hücum · <kbd>2</kbd> Mövqe tut · <kbd>3</kbd> Arxamca · <kbd>Q</kbd> artilleriya · <kbd>E</kbd> tank</div></div>
 <div id="res" class="ov dim hide"><div id="rtitle">MİSSİYA TAMAMLANDI</div><div id="rstars"></div><div id="rstats"></div>
  <div><button class="btn yel" id="bnext">NÖVBƏTİ MİSSİYA</button><button class="btn" id="bretry">YENİDƏN</button><button class="btn gray" id="bmenu">MENYU</button></div></div>
+<div id="rot" class="ov"><div class="rph"><i></i></div><h2>Telefonu çevirin</h2><div class="sub" style="margin:4px 0 0;letter-spacing:1px">Oyun yalnız üfüqi rejimdə oynanılır</div></div>
 <div id="load" class="ov"><h1>TOY <b>STRIKE</b></h1><div class="sub">HƏYƏT MÜHARİBƏSİ</div><div id="lbar"><i></i></div><div id="ltxt">Yüklənir…</div></div>
 <script src="game.js"></script>
 </body></html>
