@@ -57,7 +57,7 @@ body.mobile .desk{display:none}
 #bossb,#capb{position:absolute;left:50%;top:58px;transform:translateX(-50%);width:min(520px,70vw)} #bossb:before{content:attr(data-n);display:block;text-align:center;font:900 14px Arial;letter-spacing:4px;color:#ff8a6a;margin-bottom:4px}
 #bossb i{background:linear-gradient(180deg,#ff8a5a,#c02010)} #capb i{background:linear-gradient(180deg,#9fd0ff,#2a6fe0);width:0} #capl{text-align:center;font:800 13px Arial;margin-top:4px}
 #om{position:absolute;left:0;top:0;width:0;height:0} #om b{position:absolute;left:-13px;top:-34px;width:26px;height:26px;background:#ffd23a;border:3px solid #fff;border-radius:50% 50% 50% 0;transform:rotate(-45deg);box-shadow:0 2px 6px #000} #om span{position:absolute;left:-30px;top:-2px;width:60px;text-align:center;font:900 13px Arial}
-#xh{position:absolute;left:50%;top:50%;width:0;height:0} #xh i{position:absolute;background:#fff;box-shadow:0 0 2px #000,0 0 1px #000} #xh .d{left:-2px;top:-2px;width:4px;height:4px;border-radius:2px}
+#xh{position:absolute;left:50%;top:50%;width:0;height:0} #xh.hx::after{content:"";position:absolute;left:-15px;top:-15px;width:26px;height:26px;border:2px solid #ffde4a;border-radius:50%;box-shadow:0 0 3px #000} #xh i{position:absolute;background:#fff;box-shadow:0 0 2px #000,0 0 1px #000} #xh .d{left:-2px;top:-2px;width:4px;height:4px;border-radius:2px}
 #hm{position:absolute;left:50%;top:50%;width:34px;height:34px;margin:-17px;opacity:0;transition:opacity .12s}
 #hm i{position:absolute;left:15px;top:-2px;width:4px;height:12px;background:#fff;box-shadow:0 0 3px #000;transform-origin:2px 19px} #hm i:nth-child(2){transform:rotate(90deg)} #hm i:nth-child(3){transform:rotate(180deg)} #hm i:nth-child(4){transform:rotate(270deg)} #hm{transform:rotate(45deg)} #hm.kill i{background:#ff4040}
 #hint{position:absolute;left:50%;bottom:24%;transform:translateX(-50%);font:800 18px Arial;white-space:nowrap;opacity:0;transition:opacity .2s;background:rgba(0,0,0,.35);padding:6px 14px;border-radius:12px}
@@ -155,6 +155,64 @@ body.mobile #sb{top:auto;bottom:auto;top:110px;right:8px;font-size:11px;min-widt
 #dach{display:flex;flex-wrap:wrap;gap:6px} .ach{width:calc(20% - 5px);min-width:96px;background:rgba(0,0,0,.45);border-radius:10px;padding:6px;text-align:center;font:700 11px Arial;opacity:.7} .ach i{display:block;font-size:20px;font-style:normal} .ach b{display:block;font-size:12px} .ach span{color:#ffd23a} .ach.got{opacity:1;background:rgba(255,200,40,.3);border:1px solid #ffd23a}
 #rev h2{color:#ff6a5a} #rev .sub{letter-spacing:1px}
 @media (max-height:460px){ #menu h1{font-size:40px} #menu .sub{margin:4px 0 10px} .mode{padding:10px 12px;width:min(230px,36vw)} .mode b{font-size:18px} .mrow .btn{padding:8px 14px;font-size:13px;margin:4px} #mrank{min-width:150px;padding:4px 10px 8px} .dlist{margin-bottom:8px} .dd{width:60px;height:72px} .dd b{font-size:18px} .ach{width:calc(25% - 5px)} }
+
+/* ---- v3 lobby (PUBG-style) ---- */
+#menu{background:linear-gradient(90deg,rgba(8,14,6,.72) 0,rgba(8,14,6,.25) 30%,rgba(0,0,0,0) 55%,rgba(8,10,4,.5) 100%),linear-gradient(0deg,rgba(6,8,2,.65),rgba(0,0,0,0) 30%);justify-content:flex-start;padding:0}
+#menu .mtop{position:absolute;top:10px;left:12px;right:12px;display:flex;gap:10px;justify-content:flex-start;align-items:center}
+#mprof{display:flex;align-items:center;gap:8px;background:rgba(10,16,8,.72);border:2px solid rgba(200,180,110,.55);border-radius:12px;padding:4px 12px 4px 6px;text-align:left;cursor:pointer;pointer-events:auto}
+#mprof svg{width:44px;height:44px;flex:none} #mprof b{display:block;font:900 15px Arial;color:#fff} #mprof small{display:block;font:700 11px Arial;color:#d8e8b0} #mprof em{display:block;width:120px;height:4px;border-radius:2px;margin-top:3px;background:linear-gradient(90deg,var(--tc) var(--k),rgba(255,255,255,.2) var(--k))}
+#menu #mrank{min-width:0;padding:5px 12px 9px;border-radius:12px} #menu #mrank i{font-size:20px;width:24px}
+.mchips{margin-left:auto;display:flex;gap:8px} .chip.ssn{border-color:#ffd23a;color:#ffd23a;font-size:13px;padding:8px 12px}
+.mlogo{position:absolute;top:66px;left:0;right:0;pointer-events:none} .mlogo h1{font-size:40px;margin:0} .mlogo .sub{margin:0}
+.mside{position:absolute;left:12px;top:72px;bottom:14px;display:flex;flex-direction:column;gap:7px;justify-content:center;width:212px;z-index:2}
+.tab{pointer-events:auto;cursor:pointer;display:grid;grid-template-columns:34px 1fr;grid-template-rows:auto auto;align-items:center;text-align:left;padding:7px 10px;border-radius:10px;border:2px solid rgba(220,210,160,.35);background:linear-gradient(90deg,rgba(30,40,22,.92),rgba(30,40,22,.6));color:#fff;transition:transform .15s,background .15s,border-color .15s;clip-path:polygon(0 0,100% 0,94% 100%,0 100%)}
+.tab i{grid-row:1/3;font-style:normal;font-size:22px} .tab b{font:900 15px "Arial Black",Arial;letter-spacing:.5px} .tab small{font:700 10.5px Arial;color:#cfd8b8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tab:hover{transform:translateX(6px);border-color:#ffd23a;background:linear-gradient(90deg,rgba(70,80,30,.95),rgba(50,60,20,.7))} .tab:active{transform:translateX(3px) scale(.98)}
+.tab.shopt{background:linear-gradient(90deg,#ffcf2a,#e89a10);border-color:#fff4b0;color:#2a1a00;animation:shopG 1.8s infinite;padding:10px 10px} .tab.shopt b{font-size:17px} .tab.shopt small{color:#4a3000} 
+@keyframes shopG{50%{box-shadow:0 0 0 3px rgba(255,240,160,.7),0 0 22px rgba(255,200,40,.9)}}
+.tab.glow{border-color:#7cff6a;box-shadow:0 0 12px rgba(120,255,100,.6)}
+#mlo{position:absolute;left:236px;bottom:16px;display:flex;gap:6px;pointer-events:auto;cursor:pointer}
+#mlo div{width:96px;background:rgba(10,14,8,.72);border:2px solid var(--sc);border-radius:10px;padding:4px 6px;text-align:left} #mlo small{display:block;font:800 9px Arial;color:var(--sc);letter-spacing:1px} #mlo b{display:block;font:900 13px Arial;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#mlo div.up{border-color:#ffd23a;background:rgba(80,60,0,.75)} #mlo div.up b{color:#ffd23a}
+.mstart{position:absolute;right:14px;bottom:14px;width:300px;display:flex;flex-direction:column;align-items:stretch;gap:7px;z-index:2}
+.mmodes{display:flex;gap:4px} .mm{flex:1;pointer-events:auto;cursor:pointer;padding:8px 2px;border-radius:8px;border:2px solid rgba(255,255,255,.3);background:rgba(10,14,8,.75);color:#dde;font:900 11.5px Arial;transition:all .15s}
+.mm.on{background:#ffd23a;border-color:#fff;color:#2a1a00;transform:translateY(-2px)}
+#mdesc{font:700 12px Arial;color:#ffe9c0;text-shadow:0 1px 2px #000;text-align:right;min-height:15px}
+.mapb{pointer-events:auto;cursor:pointer;display:flex;align-items:center;gap:8px;padding:5px 8px;border-radius:8px;border:2px solid rgba(255,255,255,.35);background:rgba(10,14,8,.75);color:#fff;font:800 13px Arial;text-align:left} .mapb .th{width:54px;height:32px;border-radius:5px;flex:none} .mapb.hide{display:none}
+#bstart{pointer-events:auto;cursor:pointer;height:86px;border:0;border-radius:14px;background:linear-gradient(180deg,#ffe060,#f0a010);color:#2a1a00;box-shadow:0 6px 0 #8a5a00,0 12px 30px rgba(0,0,0,.5);clip-path:polygon(6% 0,100% 0,100% 100%,0 100%,0 22%);transition:transform .1s,filter .1s}
+#bstart b{display:block;font:900 40px "Arial Black",Arial;letter-spacing:3px} #bstart small{font:900 12px Arial;letter-spacing:2px} #bstart:hover{filter:brightness(1.1);transform:scale(1.02)} #bstart:active{transform:translateY(3px)}
+#menu #mbest{text-align:right;margin:0}
+#menu .keys{position:absolute;bottom:2px;left:236px;right:330px;font-size:10px;opacity:.75;display:none}
+#menu>*{animation:mIn .45s backwards} #menu .mside{animation:sIn .45s backwards} #menu .mstart{animation:rIn .45s .08s backwards} @keyframes sIn{from{opacity:0;transform:translateX(-40px)}} @keyframes rIn{from{opacity:0;transform:translateX(40px)}}
+.mobi{display:none} body.mobile .mobi{display:inline} body.mobile .desk{display:none}
+/* loadout */
+#loslots{display:flex;gap:10px;margin-bottom:10px} #loslots div{width:180px;padding:8px 10px;border-radius:12px;border:3px solid var(--sc);background:rgba(10,14,8,.8);text-align:left;cursor:pointer} #loslots div.sel{box-shadow:0 0 0 3px #fff,0 0 18px var(--sc)} #loslots small{font:900 11px Arial;color:var(--sc);letter-spacing:1px} #loslots b{display:block;font:900 17px Arial} #loslots span{font:700 11px Arial;color:#ccc}
+#lolist .card{width:150px;padding:10px} #lolist .card h3{font-size:15px;margin:4px 0} #lolist .card.in{outline:3px solid var(--sc)} #lolist .card.no{filter:grayscale(1);opacity:.55}
+/* ranks */
+#rkcur{display:flex;align-items:center;gap:14px;background:rgba(10,14,8,.8);border:2px solid var(--tc);border-radius:14px;padding:8px 16px;text-align:left} #rkcur svg{width:84px;height:84px} #rkcur b{font:900 24px "Arial Black",Arial;color:var(--tc)} #rkcur small{display:block;font:700 13px Arial;color:#ddd}
+#rkcur em{display:block;width:260px;height:8px;border-radius:4px;margin:6px 0 2px;background:linear-gradient(90deg,var(--tc) var(--k),rgba(255,255,255,.2) var(--k))}
+#rktiers{display:flex;gap:8px;margin:12px 0 6px;flex-wrap:wrap;justify-content:center} #rktiers div{width:92px;padding:6px 4px;border-radius:10px;background:rgba(10,14,8,.75);border:2px solid rgba(255,255,255,.15);font:800 11px Arial} #rktiers div.cur{border-color:#ffd23a;box-shadow:0 0 14px rgba(255,210,58,.6)} #rktiers div.lk{opacity:.5} #rktiers svg{width:58px;height:58px;display:block;margin:0 auto 2px} #rktiers small{display:block;color:#bbb;font-weight:700}
+#rklog{font:700 12px Arial;color:#ddd} #rklog span{display:inline-block;margin:2px 4px;padding:2px 8px;border-radius:8px;background:rgba(0,0,0,.5)} #rklog .p{color:#7cff6a} #rklog .n{color:#ff8a7a}
+/* map selector */
+#maplist .card{width:min(250px,28vw);padding:10px;cursor:pointer} #maplist .card.on{outline:4px solid #ffd23a;box-shadow:0 0 22px rgba(255,210,58,.6)} #maplist .card .th{height:120px;border-radius:10px;margin-bottom:6px;background-size:cover} #maplist h3{margin:2px 0} #maplist p{font-size:12px;min-height:30px}
+.th.yard{background:radial-gradient(circle at 75% 72%,#7cc8f0 0 13%,#e8e0c8 13.5% 15%,transparent 15.5%),radial-gradient(circle at 28% 28%,#e8d090 0 18%,transparent 18.5%),linear-gradient(0deg,transparent 46%,#c07a40 46% 54%,transparent 54%),repeating-linear-gradient(45deg,#5aa83a 0 8px,#4f9a30 8px 16px)}
+.th.shop{background:linear-gradient(90deg,transparent 12%,#5a6a80 12% 18%,transparent 18% 82%,#5a6a80 82% 88%,transparent 88%),radial-gradient(ellipse at 50% 50%,#c0402a 0 12%,transparent 12.5%),radial-gradient(circle at 30% 70%,#14110e 0 7%,transparent 7.5%),radial-gradient(circle at 70% 30%,#14110e 0 8%,transparent 8.5%),linear-gradient(0deg,transparent 48%,#e8c020 48% 50%,transparent 50%),#9a9ca0}
+.th.play{background:radial-gradient(circle at 25% 25%,#d83a2a 0 7%,transparent 7.5%),radial-gradient(circle at 75% 75%,#2a6ad8 0 7%,transparent 7.5%),radial-gradient(circle at 75% 25%,#e8c020 0 6%,transparent 6.5%),radial-gradient(circle at 25% 75%,#2aa84a 0 6%,transparent 6.5%),linear-gradient(0deg,transparent 47%,#8a2a2a 47% 53%,transparent 53%),linear-gradient(90deg,transparent 47%,#2a4a8a 47% 53%,transparent 53%),repeating-linear-gradient(0deg,#c8b890 0 10px,#bcac84 10px 20px)}
+.th.pic{background-size:cover;background-position:center}
+/* rank-up overlay */
+#rkup{z-index:40;background:radial-gradient(circle,rgba(40,30,0,.7),rgba(0,0,0,.85))} .rkin{animation:rkIn .6s cubic-bezier(.2,1.6,.4,1) backwards} .rkin svg{width:130px;height:130px;animation:rkSp 1.4s ease-out} .rkin h3{font-size:42px;font-family:"Arial Black",Arial;color:#ffd23a;margin:6px 0} .rkin b{display:block;font:900 24px Arial} .rkin p{font:800 16px Arial;color:#ffe9c0}
+@keyframes rkIn{from{opacity:0;transform:scale(.4)}} @keyframes rkSp{from{transform:rotateY(540deg) scale(.3)}}
+#rstats .rp{color:#ffd23a} #rstats .rp svg{width:22px;height:22px;vertical-align:middle;margin-right:4px}
+/* weapon slot HUD */
+#wslots{position:absolute;right:16px;bottom:96px;display:flex;gap:4px;pointer-events:none} #wslots i{font:900 10px Arial;font-style:normal;padding:3px 6px;border-radius:6px;background:rgba(0,0,0,.5);border:2px solid var(--sc);color:#fff;opacity:.55} #wslots i.on{opacity:1;background:var(--sc);color:#111;transform:scale(1.1)}
+body.mobile #wslots{right:auto;left:50%;transform:translateX(-50%);bottom:auto;top:52px}
+#obj .tb{color:#6ab8ff} #obj .tr{color:#ff7a6a} #sb .tmb span{color:#9fd0ff} #sb .tmr span{color:#ffb0a0}
+@media (max-height:460px){ .mlogo{top:50px} .mlogo h1{font-size:26px} .mlogo .sub{font-size:10px} .mside{top:56px;bottom:8px;width:170px;gap:4px} .tab{padding:4px 8px;grid-template-columns:26px 1fr} .tab i{font-size:17px} .tab b{font-size:12px} .tab.shopt{padding:6px 8px} .tab.shopt b{font-size:13px} .tab small{font-size:9px}
+ #menu .mtop{top:6px} #mprof svg{width:34px;height:34px} #mprof em{width:90px} #mprof b{font-size:13px} #menu #mrank b{font-size:13px} .chip{font-size:14px;padding:4px 10px} .chip.ssn{font-size:11px;padding:6px 8px}
+ .mstart{width:240px;right:10px;bottom:8px;gap:4px} #bstart{height:62px} #bstart b{font-size:30px} .mm{font-size:10px;padding:6px 1px} #mlo{left:190px;bottom:8px} #mlo div{width:78px} #mlo b{font-size:11px}
+ #loslots div{width:150px;padding:5px 8px} #lolist .card{width:120px;padding:6px} #rkcur svg{width:56px;height:56px} #rktiers div{width:70px} #rktiers svg{width:40px;height:40px} #maplist .card .th{height:80px} }
+@media (max-width:700px){ #mrank{display:none!important} }
+@media (max-height:460px){ .ov .btn.back{position:fixed;top:8px;left:8px;margin:0!important;z-index:40;padding:6px 14px;font-size:13px;min-width:0} }
 </style></head><body>
 <div id="hud" class="hide">
  <div id="tl"><div id="wavei"></div><div id="obj"></div></div>
@@ -166,7 +224,8 @@ body.mobile #sb{top:auto;bottom:auto;top:110px;right:8px;font-size:11px;min-widt
  <div id="xh"></div><div id="hm"><i></i><i></i><i></i><i></i></div><div id="dirs"></div>
  <div id="hint"></div><div id="pop"></div><div id="ann"></div>
  <div id="hpw"><div id="hpl">HP</div><div id="hpb" class="bar"><i></i></div><div id="sq">Squad: <span id="sqo">Follow</span> <span id="sqd"></span></div><div class="keyh"><kbd>1</kbd>Attack <kbd>2</kbd>Hold <kbd>3</kbd>Follow</div></div>
- <div id="wp"><div id="ammo">30</div><div id="wp2"><span id="nades">● 3</span><span id="arty">✈ 1</span></div><div class="keyh"><kbd>G</kbd>grenade <kbd>Q</kbd>artillery <kbd>V</kbd>roll <kbd>Ctrl</kbd>prone <kbd>X</kbd>weapon</div></div>
+ <div id="wslots"></div>
+ <div id="wp"><div id="ammo">30</div><div id="wp2"><span id="nades">● 3</span><span id="arty">✈ 1</span></div><div class="keyh"><kbd>G</kbd>grenade <kbd>Q</kbd>artillery <kbd>V</kbd>roll <kbd>Ctrl</kbd>prone <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd>weapon</div></div>
 </div>
 <div id="scope"></div>
 <div id="artyui" class="hide"></div>
@@ -177,13 +236,31 @@ body.mobile #sb{top:auto;bottom:auto;top:110px;right:8px;font-size:11px;min-widt
  <div class="mb" id="broll">⟳<br>ROLL</div><div class="mb" id="bprone">▁<br>PRONE</div><div class="mb" id="bwpn">⇄<br>WPN</div>
  <div class="mb" id="barty">✈<br>ARTY</div><div class="mb" id="bsq">SQUAD</div><div class="mb" id="bpause">II</div></div>
 <div id="menu" class="ov hide">
- <div class="mtop"><div id="mrank"></div><div><span class="chip s">★ <span id="mstar">0</span></span><span class="chip c"><span id="mcoins">0</span> ◉</span></div></div>
- <h1>TOY <b>STRIKE</b></h1><div class="sub">BACKYARD WAR</div>
- <div class="modes"><button class="mode" id="bplay"><i>★</i><b>CAMPAIGN</b><span>6 missions · bosses · squad orders</span></button><button class="mode" id="bffa"><i>⚔</i><b>FREE-FOR-ALL</b><span>Every soldier for himself · big arena</span></button></div>
- <div id="mbest"></div>
- <div class="mrow"><button class="btn yel" id="bshop">SHOP</button><button class="btn" id="bbase">BASE</button><button class="btn" id="bdaily">DAILY</button><button class="btn gray" id="bset">⚙ SETTINGS</button></div>
- <div class="keys desk"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> move · <kbd>Shift</kbd> sprint · Mouse aim/fire · RMB zoom · <kbd>V</kbd> roll · <kbd>Ctrl</kbd> prone · <kbd>C</kbd> cover · <kbd>R</kbd> reload · <kbd>G</kbd> grenade (hold to charge)<br><kbd>E</kbd> enter/exit vehicle · <kbd>X</kbd> / <kbd>1</kbd>-<kbd>5</kbd> switch weapon (FFA) · <kbd>Q</kbd> artillery · <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> squad orders · <kbd>Esc</kbd> pause</div>
+ <div class="mtop"><div id="mprof"></div><div id="mrank"></div><div class="mchips"><span class="chip ssn" id="mssn">SEASON 1</span><span class="chip s">★ <span id="mstar">0</span></span><span class="chip c"><span id="mcoins">0</span> ◉</span></div></div>
+ <div class="mlogo"><h1>TOY <b>STRIKE</b></h1><div class="sub">BACKYARD WAR</div></div>
+ <nav class="mside">
+  <button class="tab shopt" id="bshop"><i>🔫</i><b>WEAPON SHOP</b><small>Sniper · Pistol · Flamer · Bazooka · MG</small></button>
+  <button class="tab" id="blo"><i>🎒</i><b>LOADOUT</b><small>3 weapon slots</small></button>
+  <button class="tab" id="brk"><i>🏅</i><b>RANKS</b><small id="mrks">Bronze V</small></button>
+  <button class="tab" id="bdaily"><i>📋</i><b>MISSIONS</b><small>Daily · achievements</small></button>
+  <button class="tab" id="bbase"><i>⛺</i><b>BASE</b><small>Upgrade buildings</small></button>
+  <button class="tab" id="bset"><i>⚙</i><b>SETTINGS</b><small>Sound · controls</small></button>
+ </nav>
+ <div id="mlo" title="Loadout"></div>
+ <div class="mstart">
+  <div class="mmodes"><button data-m="camp" class="mm on">CAMPAIGN</button><button data-m="ffa" class="mm">FREE-FOR-ALL</button><button data-m="tdm" class="mm">TEAM DM</button></div>
+  <div id="mdesc"></div><button id="bmap" class="mapb"></button>
+  <button id="bstart"><b>START</b><small id="mstsub">CAMPAIGN</small></button>
+  <div id="mbest"></div>
+ </div>
+ <div class="modes hide"><button class="mode" id="bplay"></button><button class="mode" id="bffa"></button></div>
+ <div class="keys desk"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> move · <kbd>Shift</kbd> sprint · Mouse aim/fire · RMB zoom · <kbd>V</kbd> roll · <kbd>Ctrl</kbd> prone · <kbd>C</kbd> cover · <kbd>R</kbd> reload · <kbd>G</kbd> grenade (hold to charge)<br><kbd>E</kbd> enter/exit vehicle · <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> / wheel / <kbd>X</kbd> switch weapon · <kbd>4</kbd> <kbd>5</kbd> <kbd>6</kbd> squad orders · <kbd>Q</kbd> artillery · <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> squad orders · <kbd>Esc</kbd> pause</div>
 </div>
+</div>
+<div id="loadout" class="ov dim hide"><h2>LOADOUT</h2><div class="sub" style="margin:0 0 10px">Pick 3 weapons · switch in battle with <span class="desk">1 / 2 / 3 or the mouse wheel</span><span class="mobi">the ⇄ button</span></div><div id="loslots"></div><div class="cards" id="lolist"></div><div><button class="btn yel" id="lshop">🔫 WEAPON SHOP</button><button class="btn gray back">← BACK</button></div></div>
+<div id="ranks" class="ov dim hide"><h2>RANKS</h2><div id="rkcur"></div><div id="rktiers"></div><div id="rklog"></div><button class="btn gray back" style="margin-top:12px">← BACK</button></div>
+<div id="maps" class="ov dim hide"><h2>CHOOSE MAP</h2><div class="sub" id="mapsub" style="margin:0 0 12px"></div><div class="cards" id="maplist"></div><button class="btn gray back" style="margin-top:14px">← BACK</button></div>
+<div id="rkup" class="ov hide"><div class="rkbox"></div></div>
 <div id="mis" class="ov dim hide"><h2>MISSIONS</h2><div class="cards" id="mlist"></div><button class="btn gray back" style="margin-top:20px">← BACK</button></div>
 <div id="base" class="ov dim hide"><h2>BASE</h2><div class="sub" style="margin:0 0 14px"><span id="bcoins">0</span> ◉ · buildings help in every campaign mission</div><div class="cards" id="blist"></div><button class="btn gray back" style="margin-top:20px">← BACK</button></div>
 <div id="shop" class="ov dim hide"><h2>SHOP</h2><div class="sub" style="margin:0 0 10px"><span id="scoins">0</span> ◉ · higher ranks unlock more gear</div>
