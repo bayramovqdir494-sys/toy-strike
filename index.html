@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="az"><head><link rel="icon" href="data:,"><meta charset="utf-8">
+<html lang="en"><head><link rel="icon" href="data:,"><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Toy Strike: Backyard War</title>
 <style>
@@ -70,7 +70,7 @@ body.mobile .desk{display:none}
 #dmg{position:fixed;inset:0;pointer-events:none;z-index:9;opacity:0;background:radial-gradient(ellipse at center,transparent 45%,rgba(200,30,0,.7))}
 #flashw{position:fixed;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:9}
 #dirs{position:absolute;left:50%;top:50%} #dirs i{position:absolute;left:-60px;top:-140px;width:120px;height:30px;border-top:6px solid rgba(255,60,30,.95);border-radius:50%;transform-origin:60px 140px;filter:blur(1px)}
-#artyui{position:fixed;inset:0;pointer-events:none;z-index:8;box-shadow:inset 0 0 120px rgba(255,80,20,.45);border:3px solid rgba(255,120,40,.5)} #artyui:before{content:'ARTİLLERİYA REJİMİ';position:absolute;top:56px;left:50%;transform:translateX(-50%);font:900 20px Arial;letter-spacing:4px;color:#ffb070;text-shadow:0 2px 3px #000}
+#artyui{position:fixed;inset:0;pointer-events:none;z-index:8;box-shadow:inset 0 0 120px rgba(255,80,20,.45);border:3px solid rgba(255,120,40,.5)} #artyui:before{content:'ARTILLERY MODE';position:absolute;top:56px;left:50%;transform:translateX(-50%);font:900 20px Arial;letter-spacing:4px;color:#ffb070;text-shadow:0 2px 3px #000}
 /* result */
 #rtitle{font:900 clamp(30px,6vw,56px) "Arial Black",Arial;-webkit-text-stroke:2px #5a2a00;text-shadow:0 5px 0 #5a2a00} #rtitle.w{color:#ffd23a} #rtitle.l{color:#ff6a5a}
 #rstars b{display:inline-block;font-size:72px;color:#6a5a48;margin:6px;text-shadow:0 4px 0 rgba(0,0,0,.4);animation:pin .5s backwards} #rstars b.on{color:#ffc400;text-shadow:0 4px 0 #8a5200,0 0 30px #ffd23a}
@@ -109,40 +109,95 @@ body.annon #hint{visibility:hidden}
 .rph i{position:absolute;left:-34px;top:-30px;width:40px;height:40px;border:5px solid transparent;border-top-color:#4aa8ff;border-left-color:#4aa8ff;border-radius:50%;transform:rotate(-20deg)}
 @keyframes rph{0%,15%{transform:rotate(0)}45%,70%{transform:rotate(-90deg)}100%{transform:rotate(0)}}
 @media (max-height:340px){ #barty{right:76px;bottom:150px} body.mobile #bsq{top:auto;bottom:30px;left:156px} }
+
+/* ===== v2 ===== */
+#buse{left:50%;right:auto;bottom:100px;width:auto;height:auto;min-width:118px;padding:9px 18px;border-radius:30px;transform:translateX(-50%) scale(.6);opacity:0;pointer-events:none;flex-direction:column;font-size:17px;transition:transform .18s,opacity .18s}
+#buse small{font-size:10px;letter-spacing:2px;opacity:.85} #buse.show{transform:translateX(-50%) scale(1);opacity:1;pointer-events:auto;animation:usep 1.4s infinite} #buse.poor{--c:120,120,120;--k:200,200,200;animation:none} #buse.exit{--c:200,60,40;--k:255,200,190;animation:none}
+@keyframes usep{50%{box-shadow:0 0 0 4px rgba(255,255,255,.5),0 0 22px rgba(var(--c),1)}}
+body:not(.mobile) #buse{bottom:9%;pointer-events:none!important;flex-direction:row;gap:6px} body:not(.mobile) #buse:before{content:'[E]';color:#ffe066} body:not(.mobile) #buse.show{animation:none;opacity:.92}
+#broll{right:160px;bottom:104px;width:54px;height:54px;--c:230,110,170;--k:255,200,230} #bprone{right:262px;bottom:20px;width:54px;height:54px;--c:120,90,50;--k:230,210,170} #bwpn{right:94px;bottom:188px;width:50px;height:50px;--c:70,80,90;--k:210,220,230;font-size:11px}
+body.inveh #broll,body.inveh #bprone,body.inveh #bwpn{display:none} body.ffa #barty,body.ffa #bsq,body.ffa #sq,body.ffa #arty,body.ffa .keyh{display:none}
+@media (max-height:460px){ #broll{right:136px;bottom:62px} #bprone{right:214px;bottom:2px} #bwpn{right:76px;bottom:150px} #buse{bottom:92px} }
+body.ffa #coins:after{content:''} #ammo .wn{display:block;font:900 12px Arial;letter-spacing:2px;color:#ffe066;font-style:normal}
+#bnade{--ch:0} #bnade:after{content:'';position:absolute;inset:-6px;border-radius:50%;background:conic-gradient(#ffd23a calc(var(--ch)*1turn),transparent 0);-webkit-mask:radial-gradient(circle,transparent 62%,#000 64%);mask:radial-gradient(circle,transparent 62%,#000 64%);pointer-events:none}
+/* sniper scope */
+#scope{position:fixed;inset:0;pointer-events:none;z-index:8;display:none;background:radial-gradient(circle at center,transparent 0,transparent 32vmin,rgba(0,0,0,.92) 33vmin)} #scope:before,#scope:after{content:'';position:absolute;background:rgba(0,0,0,.85)} #scope:before{left:50%;top:18%;bottom:18%;width:2px;margin-left:-1px} #scope:after{top:50%;left:30%;right:30%;height:2px;margin-top:-1px}
+body.scope #scope{display:block} body.scope #xh{display:none!important}
+/* FFA HUD */
+#sb{position:absolute;right:18px;top:62px;min-width:150px;background:rgba(0,0,0,.42);border-radius:12px;padding:6px 10px;display:none;font:800 13px Arial} body.ffa #sb{display:block}
+#sb div{display:flex;gap:8px;padding:2px 0} #sb i{width:16px;color:#aaa;font-style:normal} #sb span{flex:1} #sb b{color:#ffd23a} #sb .me{color:#7dd0ff}
+#kf{position:absolute;right:18px;top:200px;text-align:right;font:800 13px Arial} #kf div{background:rgba(0,0,0,.4);margin:3px 0;padding:3px 8px;border-radius:8px;display:inline-block;clear:both;float:right} #kf b.me{color:#7dd0ff}
+#resp{position:absolute;left:50%;top:40%;transform:translateX(-50%);font:900 26px Arial;color:#fff;background:rgba(0,0,0,.5);padding:10px 26px;border-radius:16px} #resp b{color:#ffd23a;font-size:34px}
+body.mobile #sb{top:auto;bottom:auto;top:110px;right:8px;font-size:11px;min-width:120px} body.mobile #kf{top:60px;left:50%;right:auto;transform:translateX(-50%);font-size:11px}
+/* result extras */
+#rstats .sbf{display:block;max-height:22vh;overflow:auto;border:0;margin-top:6px} #rstats .sbf p{display:flex;gap:8px;margin:0;padding:2px 0;font:700 13px Arial} #rstats .sbf p span{flex:1;text-align:left} #rstats .sbf p.me{color:#2a6fe0;font-weight:900} #rstats .sbf small{width:26px;color:#a08060}
+.medal{font-size:80px!important}
+#b2x{background:linear-gradient(180deg,#7dff9a,#20a040);box-shadow:0 5px 0 #0a5a20,0 10px 22px rgba(0,0,0,.35)} #b2x small{font-size:13px;display:block}
+/* menu v2 */
+#menu{background:linear-gradient(180deg,rgba(10,20,10,.15),rgba(10,8,2,.55))} #menu>*{animation:mIn .45s backwards} #menu .modes{animation-delay:.08s} #menu .mrow{animation-delay:.16s}
+@keyframes mIn{from{opacity:0;transform:translateY(18px)}} .ov:not(#menu):not(#load):not(#rot){animation:fIn .25s} @keyframes fIn{from{opacity:0;transform:scale(.97)}}
+.mtop{left:16px;right:16px;justify-content:space-between;align-items:center} .mtop>div{display:flex;gap:10px}
+#mrank{display:flex;align-items:center;gap:10px;background:rgba(0,0,0,.55);border:2px solid rgba(255,210,58,.6);border-radius:16px;padding:6px 14px 10px;position:relative;text-align:left;min-width:200px}
+#mrank i{font:900 26px Arial;color:#ffd23a;font-style:normal;width:34px;text-align:center} #mrank b{display:block;font:900 16px Arial;color:#fff} #mrank small{font:700 11px Arial;color:#ffe9c0}
+#mrank em{position:absolute;left:14px;right:14px;bottom:4px;height:4px;border-radius:2px;background:linear-gradient(90deg,#ffd23a var(--k),rgba(255,255,255,.2) var(--k))}
+.modes{display:flex;gap:18px;flex-wrap:wrap;justify-content:center}
+.mode{pointer-events:auto;cursor:pointer;width:min(260px,40vw);border-radius:22px;padding:16px 16px 14px;border:3px solid #fff;color:#fff;text-align:left;box-shadow:0 6px 0 rgba(0,0,0,.35),0 14px 30px rgba(0,0,0,.4);transition:transform .12s;font-family:Arial}
+.mode:hover{transform:translateY(-4px) scale(1.02)} .mode:active{transform:translateY(2px)} .mode b{display:block;font:900 24px "Arial Black",Arial;text-shadow:0 3px 0 rgba(0,0,0,.35)} .mode span{font:700 13px Arial;opacity:.92} .mode i{float:right;font-size:34px;font-style:normal}
+#bplay{background:linear-gradient(160deg,#ffe066,#f08a20);color:#3a1a00} #bplay b{text-shadow:none} #bffa{background:linear-gradient(160deg,#ff6a5a,#9a1a40)}
+.mrow{margin-top:8px} .mrow .btn{padding:11px 22px;font-size:16px} #mbest{font:700 12px Arial;color:#ffe9c0;margin-top:6px;text-shadow:0 1px 2px #000}
+#stabs{display:flex;gap:6px;margin:0 0 12px;flex-wrap:wrap;justify-content:center} #stabs button{pointer-events:auto;cursor:pointer;border:2px solid rgba(255,255,255,.5);background:rgba(0,0,0,.4);color:#fff;font:900 14px Arial;padding:8px 16px;border-radius:20px} #stabs button.on{background:#ffd23a;color:#3a2000;border-color:#fff}
+.bars{display:flex;gap:4px;margin-top:6px} .bars i{flex:1;height:6px;border-radius:3px;background:linear-gradient(90deg,#2a6fe0 calc(var(--k)*100%),#e0d0b0 0)}
+.sw{display:flex;gap:3px;margin-top:6px} .sw i{width:22px;height:14px;border-radius:4px;border:1px solid rgba(0,0,0,.2)}
+.card.lock .btn{pointer-events:none}
+.dms{width:min(560px,92vw);text-align:left} .dms h3{font:900 15px Arial;color:#ffd23a;margin:8px 0 6px;letter-spacing:2px}
+.dm{display:grid;grid-template-columns:1fr 70px 46px;gap:2px 10px;background:rgba(255,248,234,.94);color:#3a2410;border-radius:12px;padding:7px 12px;margin-bottom:6px;font:700 13px Arial;align-items:center}
+.dm em{grid-column:1/2;height:6px;border-radius:3px;background:linear-gradient(90deg,#40b050 var(--k),#e0d0b0 0)} .dm b{grid-row:1/3;grid-column:2;text-align:center} .dm small{grid-row:1/3;grid-column:3;color:#c07800;font-weight:900} .dm.done{background:#d8f8c8}
+#dach{display:flex;flex-wrap:wrap;gap:6px} .ach{width:calc(20% - 5px);min-width:96px;background:rgba(0,0,0,.45);border-radius:10px;padding:6px;text-align:center;font:700 11px Arial;opacity:.7} .ach i{display:block;font-size:20px;font-style:normal} .ach b{display:block;font-size:12px} .ach span{color:#ffd23a} .ach.got{opacity:1;background:rgba(255,200,40,.3);border:1px solid #ffd23a}
+#rev h2{color:#ff6a5a} #rev .sub{letter-spacing:1px}
+@media (max-height:460px){ #menu h1{font-size:40px} #menu .sub{margin:4px 0 10px} .mode{padding:10px 12px;width:min(230px,36vw)} .mode b{font-size:18px} .mrow .btn{padding:8px 14px;font-size:13px;margin:4px} #mrank{min-width:150px;padding:4px 10px 8px} .dlist{margin-bottom:8px} .dd{width:60px;height:72px} .dd b{font-size:18px} .ach{width:calc(25% - 5px)} }
 </style></head><body>
 <div id="hud" class="hide">
  <div id="tl"><div id="wavei"></div><div id="obj"></div></div>
  <div id="tr"><span id="time">0:00</span><span id="coins">0</span><button id="pb" onclick="window.__pause&&__pause()">II</button></div>
+ <div id="sb"></div><div id="kf"></div><div id="resp" class="hide"></div>
  <div id="bossb" class="bar hide"><i></i></div>
  <div id="capb" class="bar hide"><i></i><div id="capl"></div></div>
  <div id="om"><b></b><span></span></div>
  <div id="xh"></div><div id="hm"><i></i><i></i><i></i><i></i></div><div id="dirs"></div>
  <div id="hint"></div><div id="pop"></div><div id="ann"></div>
- <div id="hpw"><div id="hpl">CAN</div><div id="hpb" class="bar"><i></i></div><div id="sq">Komanda: <span id="sqo">Arxamca</span> <span id="sqd"></span></div><div class="keyh"><kbd>1</kbd>Hücum <kbd>2</kbd>Mövqe <kbd>3</kbd>Arxamca</div></div>
- <div id="wp"><div id="ammo">30</div><div id="wp2"><span id="nades">● 3</span><span id="arty">✈ 1</span></div><div class="keyh"><kbd>G</kbd>qumbara <kbd>Q</kbd>artilleriya <kbd>E</kbd>tank <kbd>C</kbd>sipər</div></div>
+ <div id="hpw"><div id="hpl">HP</div><div id="hpb" class="bar"><i></i></div><div id="sq">Squad: <span id="sqo">Follow</span> <span id="sqd"></span></div><div class="keyh"><kbd>1</kbd>Attack <kbd>2</kbd>Hold <kbd>3</kbd>Follow</div></div>
+ <div id="wp"><div id="ammo">30</div><div id="wp2"><span id="nades">● 3</span><span id="arty">✈ 1</span></div><div class="keyh"><kbd>G</kbd>grenade <kbd>Q</kbd>artillery <kbd>V</kbd>roll <kbd>Ctrl</kbd>prone <kbd>X</kbd>weapon</div></div>
 </div>
+<div id="scope"></div>
 <div id="artyui" class="hide"></div>
 <div id="dmg"></div><div id="flashw"></div>
+<div class="mb" id="buse">ENTER</div>
 <div id="mob" class="hide"><div id="joy"><div id="knob"></div></div>
- <div class="mb" id="bfire">ATƏŞ</div><div class="mb" id="baim">NİŞAN</div><div class="mb" id="bnade">QUM-<br>BARA</div><div class="mb" id="bcrouch">SİPƏR</div><div class="mb" id="breload">DOLDUR</div>
- <div class="mb" id="buse">▣<br>TANK</div><div class="mb" id="barty">✈<br>ARTİL.</div><div class="mb" id="bsq">KOMAN-<br>DA</div><div class="mb" id="bpause">II</div></div>
+ <div class="mb" id="bfire">FIRE</div><div class="mb" id="baim">AIM</div><div class="mb" id="bnade">GRE-<br>NADE</div><div class="mb" id="bcrouch">COVER</div><div class="mb" id="breload">RELOAD</div>
+ <div class="mb" id="broll">⟳<br>ROLL</div><div class="mb" id="bprone">▁<br>PRONE</div><div class="mb" id="bwpn">⇄<br>WPN</div>
+ <div class="mb" id="barty">✈<br>ARTY</div><div class="mb" id="bsq">SQUAD</div><div class="mb" id="bpause">II</div></div>
 <div id="menu" class="ov hide">
- <div class="mtop"><span class="chip s">★ <span id="mstar">0</span></span><span class="chip c"><span id="mcoins">0</span> ◉</span></div>
- <h1>TOY <b>STRIKE</b></h1><div class="sub">HƏYƏT MÜHARİBƏSİ</div>
- <button class="btn yel" id="bplay">OYNA</button>
- <div><button class="btn" id="bshop">MAĞAZA</button><button class="btn" id="bbase">BAZA</button><button class="btn" id="bdaily">GÜNDƏLİK HƏDİYYƏ</button></div>
- <button class="btn gray sm" id="bsnd">Səs: Açıq</button>
- <div class="keys desk"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> hərəkət · <kbd>Shift</kbd> qaç · Siçan nişan/atəş · Sağ düymə nişan al · <kbd>C</kbd> sipər · <kbd>R</kbd> doldur · <kbd>G</kbd> qumbara<br><kbd>E</kbd> tanka min/düş · <kbd>Q</kbd> artilleriya zərbəsi · <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> komandaya əmr · <kbd>Esc</kbd> fasilə</div>
+ <div class="mtop"><div id="mrank"></div><div><span class="chip s">★ <span id="mstar">0</span></span><span class="chip c"><span id="mcoins">0</span> ◉</span></div></div>
+ <h1>TOY <b>STRIKE</b></h1><div class="sub">BACKYARD WAR</div>
+ <div class="modes"><button class="mode" id="bplay"><i>★</i><b>CAMPAIGN</b><span>6 missions · bosses · squad orders</span></button><button class="mode" id="bffa"><i>⚔</i><b>FREE-FOR-ALL</b><span>Every soldier for himself · big arena</span></button></div>
+ <div id="mbest"></div>
+ <div class="mrow"><button class="btn yel" id="bshop">SHOP</button><button class="btn" id="bbase">BASE</button><button class="btn" id="bdaily">DAILY</button><button class="btn gray" id="bset">⚙ SETTINGS</button></div>
+ <div class="keys desk"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> move · <kbd>Shift</kbd> sprint · Mouse aim/fire · RMB zoom · <kbd>V</kbd> roll · <kbd>Ctrl</kbd> prone · <kbd>C</kbd> cover · <kbd>R</kbd> reload · <kbd>G</kbd> grenade (hold to charge)<br><kbd>E</kbd> enter/exit vehicle · <kbd>X</kbd> / <kbd>1</kbd>-<kbd>5</kbd> switch weapon (FFA) · <kbd>Q</kbd> artillery · <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> squad orders · <kbd>Esc</kbd> pause</div>
 </div>
-<div id="mis" class="ov dim hide"><h2>MİSSİYALAR</h2><div class="cards" id="mlist"></div><button class="btn gray back" style="margin-top:20px">← GERİ</button></div>
-<div id="base" class="ov dim hide"><h2>BAZA</h2><div class="sub" style="margin:0 0 14px"><span id="bcoins">0</span> ◉ · binalar bütün missiyalarda kömək edir</div><div class="cards" id="blist"></div><button class="btn gray back" style="margin-top:20px">← GERİ</button></div>
-<div id="shop" class="ov dim hide"><h2>MAĞAZA</h2><div class="sub" style="margin:0 0 14px"><span id="scoins">0</span> ◉</div><div class="cards" id="slist"></div><button class="btn gray back" style="margin-top:20px">← GERİ</button></div>
-<div id="dly" class="ov dim hide"><h2>GÜNDƏLİK HƏDİYYƏ</h2><div class="sub" style="margin:0 0 14px">Hər gün gəl — mükafat böyüyür! · <span id="dcoins">0</span> ◉</div><div class="dlist" id="dlist"></div><button class="btn yel" id="bclaim">GÖTÜR</button><button class="btn gray back">← GERİ</button></div>
-<div id="pause" class="ov dim hide"><h2>FASİLƏ</h2><button class="btn yel" id="bres">DAVAM ET</button><button class="btn gray sm" id="bpsnd">Səs: Açıq</button><button class="btn red" id="bquit">MENYUYA ÇIX</button>
- <div class="keys desk"><kbd>1</kbd> Hücum · <kbd>2</kbd> Mövqe tut · <kbd>3</kbd> Arxamca · <kbd>Q</kbd> artilleriya · <kbd>E</kbd> tank</div></div>
-<div id="res" class="ov dim hide"><div id="rtitle">MİSSİYA TAMAMLANDI</div><div id="rstars"></div><div id="rstats"></div>
- <div><button class="btn yel" id="bnext">NÖVBƏTİ MİSSİYA</button><button class="btn" id="bretry">YENİDƏN</button><button class="btn gray" id="bmenu">MENYU</button></div></div>
-<div id="rot" class="ov"><div class="rph"><i></i></div><h2>Telefonu çevirin</h2><div class="sub" style="margin:4px 0 0;letter-spacing:1px">Oyun yalnız üfüqi rejimdə oynanılır</div></div>
-<div id="load" class="ov"><h1>TOY <b>STRIKE</b></h1><div class="sub">HƏYƏT MÜHARİBƏSİ</div><div id="lbar"><i></i></div><div id="ltxt">Yüklənir…</div></div>
+<div id="mis" class="ov dim hide"><h2>MISSIONS</h2><div class="cards" id="mlist"></div><button class="btn gray back" style="margin-top:20px">← BACK</button></div>
+<div id="base" class="ov dim hide"><h2>BASE</h2><div class="sub" style="margin:0 0 14px"><span id="bcoins">0</span> ◉ · buildings help in every campaign mission</div><div class="cards" id="blist"></div><button class="btn gray back" style="margin-top:20px">← BACK</button></div>
+<div id="shop" class="ov dim hide"><h2>SHOP</h2><div class="sub" style="margin:0 0 10px"><span id="scoins">0</span> ◉ · higher ranks unlock more gear</div>
+ <div id="stabs"><button data-t="wpn">WEAPONS</button><button data-t="chr">SOLDIERS</button><button data-t="cam">CAMO</button><button data-t="sq">SQUAD</button></div>
+ <div class="cards" id="slist"></div><button class="btn gray back" style="margin-top:20px">← BACK</button></div>
+<div id="dly" class="ov dim hide"><h2>DAILY</h2><div class="sub" style="margin:0 0 10px">Come back every day — rewards grow! · <span id="dcoins">0</span> ◉</div><div class="dlist" id="dlist"></div><button class="btn yel" id="bclaim">CLAIM</button>
+ <div class="dms"><h3>DAILY MISSIONS</h3><div id="dmis"></div><h3>ACHIEVEMENTS</h3><div id="dach"></div></div><button class="btn gray back">← BACK</button></div>
+<div id="set" class="ov dim hide"><h2>SETTINGS</h2><button class="btn gray" id="bsnd">Sound: On</button><button class="btn gray" id="bsens">Sensitivity: 100%</button><button class="btn gray" id="bgfx">Shadows: On</button><button class="btn gray back" style="margin-top:20px">← BACK</button></div>
+<div id="pause" class="ov dim hide"><h2>PAUSED</h2><button class="btn yel" id="bres">RESUME</button><button class="btn gray sm" id="bpsnd">Sound: On</button><button class="btn red" id="bquit">QUIT TO MENU</button>
+ <div class="keys desk"><kbd>1</kbd> Attack · <kbd>2</kbd> Hold · <kbd>3</kbd> Follow · <kbd>Q</kbd> artillery · <kbd>E</kbd> vehicle · <kbd>V</kbd> roll · <kbd>Ctrl</kbd> prone</div></div>
+<div id="rev" class="ov dim hide"><h2>YOU WERE DEFEATED</h2><div class="sub">Watch a short ad to get back into the fight with full HP</div><button class="btn" id="brev" style="background:linear-gradient(180deg,#7dff9a,#20a040)">▶ REVIVE</button><button class="btn gray" id="bgive">GIVE UP</button></div>
+<div id="res" class="ov dim hide"><div id="rtitle">MISSION COMPLETE</div><div id="rstars"></div><div id="rstats"></div>
+ <div><button class="btn" id="b2x">▶ 2× COINS</button><button class="btn yel" id="bnext">NEXT MISSION</button><button class="btn" id="bretry">RETRY</button><button class="btn gray" id="bmenu">MENU</button></div></div>
+<div id="rot" class="ov"><div class="rph"><i></i></div><h2>Rotate your phone</h2><div class="sub" style="margin:4px 0 0;letter-spacing:1px">This game is played in landscape only</div></div>
+<div id="load" class="ov"><h1>TOY <b>STRIKE</b></h1><div class="sub">BACKYARD WAR</div><div id="lbar"><i></i></div><div id="ltxt">Loading…</div></div>
 <script src="game.js"></script>
 </body></html>
